@@ -50,13 +50,9 @@ This repository contains my completed task for Day 1 of the **Laying the Foundat
 
 
 ### Step 4: Diagram
-The data schema diagram visualizes the relationships between the entities as follows:
+The data schema diagram visualizes the relationships between the entities are also avaiable in images folder
 
-![Data Schema Diagram 1](f1.jpeg)
-![Data Schema Diagram 2](f2.jpeg)
-![Data Schema Diagram 3](f3.jpeg)
-![Data Schema Diagram 4](f4.jpeg)
-![Data Schema Diagram 5](f5.jpeg)
+
 
 
 
@@ -122,7 +118,8 @@ Refer to the following PDF files for detailed documentation:
 Access the full project files, schemas, and documentation on GitHub:  
 [Furniro Marketplace Builder Hackathon 2025](https://github.com/samreensaif/Furniro-Marketplace-Builder-Hackathon-2025.git)
 
----
+### Step 4: Diagram
+The data schema diagram visualizes the relationships between the entities are also avaiable in images folder
 
 ## **Next Steps**
 - Begin implementation on Day 3, focusing on frontend integration with Sanity CMS and third-party APIs.
