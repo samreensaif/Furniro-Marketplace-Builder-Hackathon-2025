@@ -1,12 +1,9 @@
-"use client"
+"use client";
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-
 import { ArrowRightLeft, Heart, Share2 } from "lucide-react";
-
-
 import { client } from "@/sanity/lib/client";
 import { Button } from "./ui/button";
 
@@ -30,7 +27,7 @@ function OurProducts() {
         *[_type=='product'][]{
           'productImage': productImage.asset->url,
           description,
-          dicountPercentage, // Corrected typo
+          dicountPercentage,
           tags,
           isNew,
           title,
@@ -41,8 +38,7 @@ function OurProducts() {
       setCards(res);
     };
     fetchData();
-  }, []); // Empty dependency array to prevent infinite loop
-  
+  }, []);
 
   return (
     <>
@@ -53,23 +49,21 @@ function OurProducts() {
           <h2 className="mb-8 text-center text-3xl font-bold">Our Products</h2>
 
           {/* Product Grid */}
-          <div className="w-[1236px] grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 exsm:pl-0 justify-items-center">
+          <div className="grid grid-cols-1 exsm:grid-cols-1 xsm:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 justify-items-center">
             {/* Card Body */}
             {cards.slice(0, 8).map((item: ProductSection, index: number) => (
               <div
                 key={index}
-                className="group shadow-md rounded-lg relative w-full max-w-xs sm:max-w-sm exsm:max-w-[320px] lg:max-w-md overlay-wrapper"
+                className="group shadow-md rounded-lg relative w-full max-w-xs exsm:max-w-[280px] xsm:max-w-[320px] sm:max-w-[300px] md:max-w-[240px] lg:max-w-[280px] xl:max-w-[300px] 2xl:max-w-[320px] overlay-wrapper"
               >
                 {/* Overlay */}
                 <div className="absolute inset-0 bg-black bg-opacity-50 z-10 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
 
-
-              
                 {/* Add to Cart Button */}
                 <Link
                   href={`/shop/ProductDetails?id=${index}&productName=${item.title}&productPrice=${item.price}&productImage=${item.productImage}&productDescription=${item.description}&dicountPercentage=${item.dicountPercentage}&tags=${item.tags}&isNew=${item.isNew}`}
                 >
-                  <Button className="absolute w-[202px] top-[175px] left-1/2 transform -translate-x-1/2 z-20 bg-white hover:bg-gray-200 text-black transition-all opacity-0 group-hover:opacity-100">
+                  <Button className="absolute w-[202px] exsm:w-[180px] xsm:w-[190px] sm:w-[200px] top-[175px] exsm:top-[150px] xsm:top-[160px] sm:top-[170px] left-1/2 transform -translate-x-1/2 z-20 bg-white hover:bg-gray-200 text-black transition-all opacity-0 group-hover:opacity-100">
                     Add to Cart
                   </Button>
                 </Link>
@@ -93,47 +87,45 @@ function OurProducts() {
                 </div>
 
                 {/* Card Image */}
-                <div className="relative w-full h-[301px] overflow-hidden">
+                <div className="relative w-full h-[301px] exsm:h-[250px] xsm:h-[270px] sm:h-[280px] md:h-[240px] lg:h-[260px] xl:h-[280px] 2xl:h-[300px] overflow-hidden">
                   <Image
                     src={item.productImage}
                     alt={item.title}
-                    objectFit="center"
+                    objectFit="cover"
                     fill
-                    className="transition-transform group-hover:scale-105 "
+                    className="transition-transform group-hover:scale-105"
                   />
-
                 </div>
-                  {/* Card isNew/Old */}
+
+                {/* Card isNew/Old */}
                 {item.isNew && (
+                  <div
+                    className={`absolute left-4 top-4 rounded-full px-3 py-2 text-sm text-white
+                      ${item.isNew === true ? "bg-green-500" : "bg-red-500"}`}
+                  >
+                    {item.isNew === true ? "New" : "Old"}
+                  </div>
+                )}
 
-          <div
-            className={`absolute left-4 top-4 rounded-full px-3 py-2 text-sm text-white
-              ${item.isNew === true ? 'bg-green-500' : 'bg-red-500'}`}
-          >
-          {item.isNew === true ? 'New' : 'Old'}
-          
-          </div>
-        )}
-
-
-          
-         {/* Discount Percentage */}
-         {item.dicountPercentage  && (
-           
-        
-  <div className="absolute right-4 top-4 rounded-full px-3 py-1 text-sm text-white bg-red-500">
-    -{item.dicountPercentage}%
-  </div>
-)}
-
-       
+                {/* Discount Percentage */}
+                {item.dicountPercentage && (
+                  <div className="absolute right-4 top-4 rounded-full px-3 py-1 text-sm text-white bg-red-500">
+                    -{item.dicountPercentage}%
+                  </div>
+                )}
 
                 {/* Card Content */}
                 <div className="p-4 flex flex-col gap-3">
-                  <h2 className="text-[24px] leading-[28px] font-semibold">{item.title}</h2>
-                  <p>{item.description.slice(0, 20)}...</p>
+                  <h2 className="text-[24px] exsm:text-[20px] xsm:text-[22px] sm:text-[24px] leading-[28px] font-semibold">
+                    {item.title}
+                  </h2>
+                  <p className="exsm:text-sm xsm:text-sm sm:text-base">
+                    {item.description.slice(0, 20)}...
+                  </p>
                   <div className="flex justify-between">
-                    <p className="text-[20px] leading-[24px] font-semibold">Rs. {item.price}</p>
+                    <p className="text-[20px] exsm:text-[18px] xsm:text-[18px] sm:text-[20px] leading-[24px] font-semibold">
+                      Rs. {item.price}
+                    </p>
                     <p className="line-through text-gray-500">{item.dicountPercentage}</p>
                   </div>
                 </div>
@@ -156,6 +148,3 @@ function OurProducts() {
 }
 
 export default OurProducts;
-
-
-

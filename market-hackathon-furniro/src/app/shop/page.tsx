@@ -55,7 +55,7 @@ export default function ProductGrid() {
 
 
   useEffect(() => {
-    async function getData() {
+    const getData = async () => {
       let query = `*[_type=='product']`;
   
       if (search) {
