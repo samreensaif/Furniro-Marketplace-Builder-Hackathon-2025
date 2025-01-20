@@ -19,7 +19,7 @@ export default function Wishlist() {
   // localStorage.removeItem("wishlist");
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
+   
       const storedWishlist = localStorage.getItem("wishlist");
 
 
@@ -50,7 +50,7 @@ export default function Wishlist() {
         }
       }
     }
-  }, []);
+  , []);
 
   const handleRemoveItem = (id: string) => {
     const updatedWishlist = wishlistItems.filter((item) => item.id !== id);

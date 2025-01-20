@@ -5,18 +5,21 @@ import Spmain from '@/components/Spmain';
 import Productdetails from '@/components/Productdetails';
 import Relatedproducts from '@/components/Relatedproducts';
 
-async function Singleproduct({ searchParams }: { 
-  searchParams: { 
-    id: number;
-    productName: string;
-    productPrice: number;
-    productImage: string;
-    productDescription: string;
-    productdicountPercentage: number;
-    tags: string;
-    isNew: boolean;
-  }; 
-}) {
+async function Singleproduct(
+  props: { 
+    searchParams: Promise<{ 
+      id: number;
+      productName: string;
+      productPrice: number;
+      productImage: string;
+      productDescription: string;
+      productdicountPercentage: number;
+      tags: string;
+      isNew: boolean;
+    }>; 
+  }
+) {
+  const searchParams = await props.searchParams;
   const { 
     id,
     productName,

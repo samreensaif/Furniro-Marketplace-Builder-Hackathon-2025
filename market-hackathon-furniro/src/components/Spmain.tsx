@@ -622,7 +622,7 @@ function Spmain(props: {
                   src="/Group.png"
                   alt="Shopping Cart"
                   fill
-                  objectFit="cover"
+                  style={{ objectFit: 'cover' }} // Corrected here
                 />
               </div>
             </div>
@@ -636,7 +636,7 @@ function Spmain(props: {
                     src={item.productImage}
                     alt="Product"
                     fill
-                    objectFit="center"
+                    style={{ objectFit: 'cover' }} // Corrected here
                   />
                 </div>
                 <div className="flex flex-col gap-2">
