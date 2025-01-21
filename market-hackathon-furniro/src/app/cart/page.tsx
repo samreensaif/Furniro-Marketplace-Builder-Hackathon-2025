@@ -38,7 +38,7 @@ function CartContent() {
     const productImage = searchParams.get("productImage");
     const qty = Number(searchParams.get("qty") || 1);
     const dicountPercentage = Number(searchParams.get("dicountPercentage") || 0);
-    const total = Number(searchParams.get("total") || 0);
+    
 
     if (productName && productPrice && productImage && id) {
       const isDuplicate = updatedCart.some(

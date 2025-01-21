@@ -4,8 +4,7 @@
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
 import Image from "next/image";
-import { useAtom } from 'jotai'
-import { searchName } from '@/globalState/globalState'
+
 import { Button } from "@/components/ui/button";
 
 import { client } from "@/sanity/lib/client";
