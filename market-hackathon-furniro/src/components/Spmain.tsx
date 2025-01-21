@@ -188,7 +188,7 @@ function Spmain(props: {
 
             <div className="h-[2px] w-full bg-gray-200 mb-4"></div>
 
-            {cartItem.map((item: IProduct, index: number) => (
+            {cartItem.map((item: IProduct, index: number) => {return (
               <div key={index} className="flex gap-4 mb-4">
                 <div className="relative w-[80px] exsm:w-[90px] xsm:w-[100px] sm:w-[108px] h-[80px] exsm:h-[90px] xsm:h-[100px] sm:h-[105px]">
                   <Image
@@ -209,8 +209,9 @@ function Spmain(props: {
                 <Button variant={"no"} onClick={() => handleRemoveItem(item.id)}>
                   <CircleX className="text-gray-400 mt-6 cursor-pointer" />
                 </Button>
-              </div>
-            ))}
+              </div>)} 
+            
+           )}
 
             <div className="h-[2px] w-full bg-gray-300 mb-4"></div>
 
@@ -262,8 +263,9 @@ function Spmain(props: {
         <div className="flex flex-col lg:flex-row gap-6 mt-10 lg:w-1/2">
           {/* Thumbnails */}
           <div className="flex gap-4 lg:flex-col">
-            {[...Array(4)].map((_, index) => (
-              <div
+            {[...Array(4)].map((_, index) =>{return(
+
+<div
                 key={index}
                 className="w-[60px] h-[60px] exsm:w-[70px] exsm:h-[70px] xsm:w-[76px] xsm:h-[80px] bg-[#f9f1e7] rounded-xl flex items-center justify-center"
               >
@@ -275,7 +277,7 @@ function Spmain(props: {
                   className="w-[50px] h-[50px] object-center rounded-md"
                 />
               </div>
-            ))}
+            )} )}
           </div>
 
           {/* Main Image */}

@@ -117,7 +117,7 @@ useEffect(() => {
 
       <div className="container mx-auto p-4 md:p-6">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-          {paginatedCards.map((item: ProductSection, index: number) => (
+          {paginatedCards.map((item: ProductSection, index: number) => {return(
             <Card
               key={index}
               className="group relative overflow-hidden shadow-md"
@@ -183,7 +183,8 @@ useEffect(() => {
                 </div>
               </CardFooter>
             </Card>
-          ))}
+
+          )})}
         </div>
 
         <div className="mt-8 flex justify-center gap-2 flex-wrap">

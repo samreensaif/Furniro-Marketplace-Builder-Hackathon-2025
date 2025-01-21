@@ -184,14 +184,15 @@ const deleteFunction = async (_id: string) => {
       )}
 
       <hr className='my-4'/>
-      {cmtArray.map((comment: Comment, index: number) => (
-         <ReviewCard
-         data={comment}
-         key={index}
-         setUpdateInputFields={setUpdateInputFields}
-         deleteFunction={deleteFunction}
-       />
-      ))}
+      {cmtArray.map((comment: Comment, index: number) =>{return(
+ <ReviewCard
+ data={comment}
+ key={index}
+ setUpdateInputFields={setUpdateInputFields}
+ deleteFunction={deleteFunction}
+/>
+
+      )} )}
     </div>
 
   )

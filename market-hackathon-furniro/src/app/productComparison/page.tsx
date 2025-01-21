@@ -92,8 +92,9 @@ interface BoxContent {
 
         <div className="mt-[42px] px-[16px] sm:px-[50px]">
           
-          {res.map((section:BoxContent, index:number) => (
-            <div key={index} className="mt-[96px]">
+          {res.map((section:BoxContent, index:number) =>{
+            return(
+<div key={index} className="mt-[96px]">
               <h3 className="text-[18px] sm:text-2xl font-medium">{section.boxTitle}</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 <div className="w-full border-r border-gray-300">
@@ -123,7 +124,8 @@ interface BoxContent {
                 </div>
               </div>
             </div>
-          ))}
+
+          )})}
         </div>
 
         <div className="flex items-center justify-center mt-[53px] mb-[50px] gap-[24px] sm:gap-[108px] flex-wrap">

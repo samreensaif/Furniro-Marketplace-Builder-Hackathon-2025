@@ -55,14 +55,15 @@ function PcSectionTwo(props:{productName:string,productPrice:string,productImage
 
                   <pre className="text-[14px] sm:text-[16px]">
                      5.0
-                    {[...Array(5)].map((_, index) => (
+                    {[...Array(5)].map((_, index) =>{return(
                       <FaStar
                         key={index}
                         color="yellow"
                         size={18}
                         className="inline ml-[6px] mb-[7px]"
                       />
-                    ))} 
+
+                    )} )} 
                     <FaRegStarHalfStroke
                       color="yellow"
                       size={18}
@@ -98,14 +99,15 @@ function PcSectionTwo(props:{productName:string,productPrice:string,productImage
 
                   <pre className="text-[14px] sm:text-[16px]">
                      4.5
-                    {[...Array(3)].map((_, index) => (
+                    {[...Array(3)].map((_, index) =>{return(
                       <FaStar
                         key={index}
                         color="yellow"
                         size={18}
                         className="inline ml-[6px] mb-[7px]"
                       />
-                    ))} 
+
+                    )} )} 
                     <FaRegStarHalfStroke
                       color="yellow"
                       size={18}

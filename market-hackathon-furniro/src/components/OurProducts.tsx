@@ -51,7 +51,11 @@ function OurProducts() {
           {/* Product Grid */}
           <div className="grid grid-cols-1 exsm:grid-cols-1 xsm:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 justify-items-center">
             {/* Card Body */}
-            {cards.slice(0, 8).map((item: ProductSection, index: number) => (
+
+
+           
+             {cards.slice(0, 8).map((item: ProductSection, index: number) =>{
+              return ( 
               <div
                 key={index}
                 className="group shadow-md rounded-lg relative w-full max-w-xs exsm:max-w-[280px] xsm:max-w-[320px] sm:max-w-[300px] md:max-w-[240px] lg:max-w-[280px] xl:max-w-[300px] 2xl:max-w-[320px] overlay-wrapper"
@@ -129,8 +133,11 @@ function OurProducts() {
                     <p className="line-through text-gray-500">{item.dicountPercentage}</p>
                   </div>
                 </div>
-              </div>
-            ))}
+              </div>)} 
+             
+            )}
+
+          
           </div>
 
           {/* Show More Button */}

@@ -129,7 +129,8 @@ export default function Blog() {
             <div className="border border-darkgray w-full px-6 py-4 mt-6">
               <h1 className="text-2xl font-medium mb-6">Recent Posts</h1>
 
-              {rPost.map((item, index) => (
+              {rPost.map((item, index) => {
+                return(
                 <div className="flex gap-3 mb-6" key={index}>
                   <Image
                     src={item.relatedPostImage}
@@ -142,7 +143,9 @@ export default function Blog() {
                     <p className="text-gray-400">{item.relatedPostDate}</p>
                   </div>
                 </div>
-              ))}
+
+              )}
+             )}
             </div>
           </aside>
         </section>

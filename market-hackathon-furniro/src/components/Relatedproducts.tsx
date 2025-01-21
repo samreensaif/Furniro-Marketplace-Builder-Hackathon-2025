@@ -49,25 +49,7 @@ const [cards,setCards]=useState<ProductSection[]>([])
           setCards(res)
           
         
-          // if(!res || res.length === 0){
-            
-          //   const res:ProductSection[]=await client.fetch(`
-            
-          //      *[_type=='product'][]{
-          //   'productImage': productImage.asset->url,
-          //   description,
-          //   discountPercentage,
-          //   tags,
-          //   isNew,
-          //   title,
-          //   price,
-          //   _id
-          // }
-          //   `);
           
-          // setCards(res)
-          
-          // }
 
         }
 
@@ -94,8 +76,10 @@ const [cards,setCards]=useState<ProductSection[]>([])
       className="w-[1236px] m-auto ">
         <CarouselContent className="flex overflow-x-auto space-x-4">
 
-          {(cards.reverse()).map((item:ProductSection ,index:number) => (
-            <CarouselItem key={index} className="flex-none w-[285px]">
+          {(cards.reverse()).map((item:ProductSection ,index:number) =>{
+            
+            return(
+<CarouselItem key={index} className="flex-none w-[285px]">
               <div className="bg-white border border-gray-200 rounded-lg shadow">
                 <div className="relative w-full h-[301px] overflow-hidden rounded-t-lg">
                   <Image
@@ -117,7 +101,8 @@ const [cards,setCards]=useState<ProductSection[]>([])
                 </div>
               </div>
             </CarouselItem>
-          ))}
+
+            )} )}
         </CarouselContent>
       </Carousel>
 

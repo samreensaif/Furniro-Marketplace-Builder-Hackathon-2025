@@ -105,8 +105,9 @@ function CartContent() {
 
               {/* Table Body */}
               <tbody>
-                {cartItem.map((item: IProduct, index) => (
-                  <tr key={index} className="text-center">
+                {cartItem.map((item: IProduct, index) =>{
+                  return(
+<tr key={index} className="text-center">
                     {/* Product Details */}
                     <td className="border border-[#f9f1e7] flex flex-col items-center justify-center gap-4 p-4">
                       <Image
@@ -145,7 +146,8 @@ function CartContent() {
                       </Button>
                     </td>
                   </tr>
-                ))}
+
+                  )} )}
               </tbody>
             </table>
           ) : (

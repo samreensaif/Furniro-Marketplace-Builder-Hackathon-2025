@@ -50,8 +50,10 @@ setRes(res)
 
   return (
     <>
-      {res.map((item:blog, index:number) => (
-        <div key={index} className="w-full mb-12">
+      {res.map((item:blog, index:number) =>{
+        return(
+
+<div key={index} className="w-full mb-12">
           {/* image top div */}
           <div className="w-full">
             <Image
@@ -88,7 +90,9 @@ setRes(res)
             <p className="text-sm underline cursor-pointer">Read More</p>
           </div>
         </div>
-      ))}
+      )}
+      
+      )}
     </>
   );
 }

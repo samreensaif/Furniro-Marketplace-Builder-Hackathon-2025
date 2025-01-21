@@ -35,8 +35,9 @@ async function  Browserange() {
 
       {/* Card Body Section */}
       <div className="mt-10 grid grid-cols-1 lg:grid-cols-3 gap-5   exsm:pl-1  ">
-        {(res).map((item: Icard, index: number) => (
-          <div className="flex flex-col  items-center shadow-lg rounded-md overflow-hidden " key={index}>
+        {(res).map((item: Icard, index: number) => {return(
+
+<div className="flex flex-col  items-center shadow-lg rounded-md overflow-hidden " key={index}>
             
             {/* Top Image Container */}
             <div className='transition-transform duration-300 hover:scale-105'>
@@ -61,7 +62,7 @@ async function  Browserange() {
               </h2>
             </div>
           </div>
-        ))}
+        )})}
       </div>
     </section>
   );
