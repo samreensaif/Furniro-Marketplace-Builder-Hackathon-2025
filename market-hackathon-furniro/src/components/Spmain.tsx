@@ -45,7 +45,7 @@ function Spmain(props: {
   const [cartVisible, setCartVisible] = useState(false);
   const [addToCart, setAddToCart] = useState(1);
   const [cartItem, setCartItem] = useState<IProduct[]>([]);
-
+// const [total, setTotal] = useState(0);
   const searchParams = useSearchParams();
 
   // Function for increasing quantity
@@ -118,6 +118,7 @@ function Spmain(props: {
 
     return finalTotal;
   }
+  
 
   function addItemToCart() {
     const newItem = {
@@ -154,7 +155,7 @@ function Spmain(props: {
     toast.success("Item Added to Wishlist");
     const wishlist = JSON.parse(localStorage.getItem("wishlist") || "[]");
 
-    console.log("💟💥",wishlist)
+   
     wishlist.push({ id, productName, productImage, productPrice });
 
     localStorage.setItem("wishlist", JSON.stringify(wishlist));
@@ -170,17 +171,19 @@ function Spmain(props: {
             onClick={() => setCartVisible(false)}
           ></div>
 
-          <div className="absolute flex flex-col top-0 right-0 w-[300px] exsm:w-[350px] xsm:w-[400px] sm:w-[417px] h-[746px] p-4 bg-white z-20">
+          <div className="absolute flex flex-col top-0 right-0 w-[400px] exsm:w-[300px]  h-[750px] p-4 bg-white z-20">
             <div className="flex justify-between items-center mb-6">
               <h2 className="font-bold text-[20px] exsm:text-[22px] xsm:text-[24px]">Shopping Cart</h2>
-              <div className="relative w-4 h-4">
+              <button 
+              onClick={() => setCartVisible(false)}
+              className="relative w-4 h-4">
                 <Image
                   src="/Group.png"
                   alt="Shopping Cart"
                   fill
                   style={{ objectFit: 'cover' }} // Corrected here
                 />
-              </div>
+              </button>
             </div>
 
             <div className="h-[2px] w-full bg-gray-200 mb-4"></div>
@@ -216,9 +219,9 @@ function Spmain(props: {
               <p>Rs. {calculateTotalPrice(dicountPercentage)}</p>
             </div>
             <div className="h-[2px] w-full bg-gray-200 mb-6"></div>
-            <div className="flex gap-4">
+            <div className="gap-4 flex exsm:grid grid-cols-1 place-items-center">
               <Link
-                href={`/cart?id=${id}&productImage=${productImage}&productName=${productName}&productPrice=${productPrice}&qty=${addToCart}&dicountPercentage=${dicountPercentage}`}
+                href={`/cart?id=${id}&productImage=${productImage}&productName=${productName}&productPrice=${productPrice}&qty=${addToCart}&dicountPercentage=${dicountPercentage}`} 
               >
                 <Button
                   variant={"outline"}
@@ -256,7 +259,7 @@ function Spmain(props: {
       )}
 
       <div className="m-auto flex flex-col lg:flex-row gap-10 lg:justify-center">
-        <div className="flex flex-col lg:flex-row gap-6 lg:w-1/2">
+        <div className="flex flex-col lg:flex-row gap-6 mt-10 lg:w-1/2">
           {/* Thumbnails */}
           <div className="flex gap-4 lg:flex-col">
             {[...Array(4)].map((_, index) => (
@@ -276,13 +279,15 @@ function Spmain(props: {
           </div>
 
           {/* Main Image */}
-          <div className="relative w-full max-w-[300px] exsm:max-w-[350px] xsm:max-w-[400px] sm:max-w-[423px] h-[300px] exsm:h-[350px] xsm:h-[400px] sm:h-[500px] bg-[#f9f1e7] rounded-lg flex items-center justify-center">
+          <div className="relative w-full max-w-[300px] md:max-w-[423px] h-[300px] md:h-[500px] rounded-lg flex items-center justify-center ml-[50px]">
             <Image
               src={productImage}
               alt="Main Image"
-              width={280}
-              height={480}
-              className="w-[280px] h-[480px] object-center rounded-md"
+              // width={480}
+              // height={480}
+              objectFit="cover"
+              layout="fill"
+              className="object-center rounded-md"
             />
           </div>
         </div>

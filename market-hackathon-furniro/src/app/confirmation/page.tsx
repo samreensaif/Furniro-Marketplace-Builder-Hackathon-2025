@@ -6,12 +6,15 @@ import Link from 'next/link'
 
 
 
-async function Confirmation({searchParams}:{searchParams : Promise<{productName:string, productPrice:string, }>}) {
+async function Confirmation({searchParams}:{searchParams : Promise<{productName:string, totalItems:number,totalPrice:number,subTotal:number }>}) {
 
 
-const{ productName, productPrice}=await searchParams
+const{ productName, totalItems,totalPrice,subTotal}=await searchParams
 
-
+console.log("🧓👩‍🦰",searchParams)
+console.log("🧓",totalItems)
+console.log("🧓",totalPrice)
+console.log("🧓",productName)
   return (
     <div className='min-h-screen bg-white px-4 md:px-8 lg:px-12'>
 
@@ -52,16 +55,16 @@ const{ productName, productPrice}=await searchParams
         
           <TableRow >
             <TableCell className="font-medium">invoice#1</TableCell>
-            <TableCell>1</TableCell>
+            <TableCell> {totalItems}</TableCell>
             <TableCell>{productName}</TableCell>
-            <TableCell className="text-right">Rs. {productPrice}</TableCell>
+            <TableCell className="text-right">Rs. {subTotal}</TableCell>
           </TableRow>
         
       </TableBody>
       <TableFooter>
         <TableRow>
           <TableCell colSpan={3}>Total</TableCell>
-          <TableCell className="text-right">Rs. {productPrice}</TableCell>
+          <TableCell className="text-right">Rs. {totalPrice}</TableCell>
         </TableRow>
       </TableFooter>
     </Table>

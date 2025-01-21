@@ -74,6 +74,11 @@ export default function Navbar() {
             <ShoppingCart className="w-6 h-6" />
           </button>
           </Link>
+          <Link href={'/login'}>
+          <button aria-label="Account" className="p-2 hover:bg-black/5 rounded-full transition-colors">
+            <UserCircle className="w-6 h-6" />
+          </button>
+          </Link>
         </div>
       </div>
 
@@ -110,12 +115,20 @@ export default function Navbar() {
           <button aria-label="Search" onClick={() => setMenuOpen(false)} className="p-2 hover:bg-black/5 rounded-full transition-colors">
             <Search className="w-6 h-6" />
           </button>
-          <button aria-label="Wishlist" onClick={() => setMenuOpen(false)} className="p-2 hover:bg-black/5 rounded-full transition-colors">
+         <Link href={"/wishlist"}>
+         <button aria-label="Wishlist" onClick={() => setMenuOpen(false)} className="p-2 hover:bg-black/5 rounded-full transition-colors">
             <Heart className="w-6 h-6" />
           </button>
+         
+         </Link>
           <Link href="/cart">
           <button aria-label="Shopping Cart" onClick={() => setMenuOpen(false)} className="p-2 hover:bg-black/5 rounded-full transition-colors">
             <ShoppingCart className="w-6 h-6" />
+          </button>
+          </Link>
+          <Link href={'/login'}>
+          <button aria-label="Account" className="p-2 hover:bg-black/5 rounded-full transition-colors">
+            <UserCircle className="w-6 h-6" />
           </button>
           </Link>
         </div>

@@ -4,7 +4,8 @@
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
 import Image from "next/image";
-
+import { useAtom } from 'jotai'
+import { searchName } from '@/globalState/globalState'
 import { Button } from "@/components/ui/button";
 
 import { client } from "@/sanity/lib/client";
@@ -34,34 +35,38 @@ interface RelatedPost {
 export default function Blog() {
   const [res, setRes] = useState<Ires[]>([]);
   const [rPost, setRPost] = useState<RelatedPost[]>([]);
+  
 
   useEffect(() => {
     const fetchData = async () => {
-    //   const res: Ires[] = await client.fetch(`
+      const res: Ires[] = await client.fetch(`
 
-    //   *[_type=='blogPage'][0].sections[2].categorySection[]{
-    //   'categoryNumber':categoryNumber,
-    //   'categoryName':categoryName
-    // }
+      *[_type=='blogPage'][0].sections[2].categorySection[]{
+      'categoryNumber':categoryNumber,
+      'categoryName':categoryName
+    }
       
-    //   `);
-    //   setRes(res);
+      `);
+      setRes(res);
 
-//       const rPost: RelatedPost[] = await client.fetch(`
+      const rPost: RelatedPost[] = await client.fetch(`
       
-//  *[_type=='blogPage'][0].sections[3].relatedPostMain[]{
-//       'relatedPostDate':relatedPostDate,
-//       'relatedPostTitle':relatedPostTitle,
-//       'relatedPostImage':relatedPostImage.asset->url
-//     }
+ *[_type=='blogPage'][0].sections[3].relatedPostMain[]{
+      'relatedPostDate':relatedPostDate,
+      'relatedPostTitle':relatedPostTitle,
+      'relatedPostImage':relatedPostImage.asset->url
+    }
   
-//       `);
+      `);
 
-//       setRPost(rPost);
+      setRPost(rPost);
     };
 
     fetchData();
   }, []);
+
+
+  
 
   return (
     <div className="w-full relative bg-white flex flex-col items-start justify-start leading-normal tracking-normal">
@@ -94,9 +99,13 @@ export default function Blog() {
           {/* sidebar */}
           <aside className="relative w-full lg:w-1/3 flex flex-col items-center gap-6">
             <div className="relative w-full">
-              <Input className="mb-6 h-12 w-full" />
+              <Input
+              
+              placeholder="Search..." 
+              
+              className="mb-6 h-12 w-full" />
               <div className="absolute top-3 right-4">
-                {/* <Search /> */}
+                <Search />
               </div>
             </div>
 
@@ -140,7 +149,7 @@ export default function Blog() {
         </section>
 
         {/* four-button div */}
-        {/* <div className="flex gap-4 items-center justify-center my-8">
+        <div className="flex gap-4 items-center justify-center my-8">
           <Button className="w-12 h-12 text-lg bg-white text-black hover:bg-[#b88e2f]">
             1
           </Button>
@@ -155,7 +164,7 @@ export default function Blog() {
           </Button>
         </div>
 
-        <Shopbottombar /> */}
+        <Shopbottombar />
       </main>
     </div>
   );
