@@ -1,10 +1,13 @@
 //src\components\blogCenter\BlogCenter.tsx
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 
 import { client } from "@/sanity/lib/client";
 
-async function BlogCenter() {
+
+
+
+ function BlogCenter() {
 
   interface blog {
       blogDate: string
@@ -14,25 +17,36 @@ async function BlogCenter() {
       blogIcon: string
       blogImage: string
     }
+
+    const [res,setRes] = useState<blog[]>([])
   
+useEffect(()=>{
 
-const res : blog[] =await client.fetch(`
+  const getData = async () => {
+    const res : blog[] =await client.fetch(`
   
   
- *[_type=='blogPage'][0].sections[0].blog[]{
+      *[_type=='blogPage'][0].sections[0].blog[]{
+     
+       'blogDate':blogDate,
+       'blogUser':blogUser,
+       'blogTitle':blogTitle,
+       'blogDescription':blogDescription,
+       'blogIcon':blogIcon,
+       'blogImage':blogImage.asset->url,
+       
+     
+     
+     }
+     
+       `)
+setRes(res)
+  }
 
-  'blogDate':blogDate,
-  'blogUser':blogUser,
-  'blogTitle':blogTitle,
-  'blogDescription':blogDescription,
-  'blogIcon':blogIcon,
-  'blogImage':blogImage.asset->url,
-  
+ getData()
 
+},[])
 
-}
-
-  `)
 
   return (
     <>

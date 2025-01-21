@@ -9,9 +9,9 @@ import Link from "next/link";
 
 interface WishlistItem {
   id: string;
-  name: string;
-  price: number;
-  image: string;
+  productName: string;
+  productPrice: number;
+  productImage: string;
 }
 
 export default function Wishlist() {
@@ -38,9 +38,9 @@ export default function Wishlist() {
           // Transform keys to match WishlistItem interface
           const transformedWishlist: WishlistItem[] = parsedWishlist.map((item: WishlistItem) => ({
             id: item.id,
-            name: item.name,
-            price: Number(item.price), // Convert to number
-            image: item.image,
+            productName: item.productName,
+            productPrice: Number(item.productPrice), // Convert to number
+            productImage: item.productImage,
           }));
 
           console.log("✅ Transformed Wishlist Data:", transformedWishlist);
@@ -91,11 +91,11 @@ export default function Wishlist() {
                   return (
                     <div key={index} className="flex items-center space-x-4">
                       <div className="relative w-24 h-24 rounded-md overflow-hidden">
-                        <Image src={item.image} alt={item.name} layout="intrinsic" width={96} height={96} />
+                        <Image src={item.productImage} alt={item.productName} layout="intrinsic" width={96} height={96} />
                       </div>
                       <div className="flex-1">
-                        <h3 className="font-semibold">{item.name}</h3>
-                        <p className="text-sm text-gray-500">Rs. {item.price}</p>
+                        <h3 className="font-semibold">{item.productName}</h3>
+                        <p className="text-sm text-gray-500">Rs. {item.productPrice}</p>
                       </div>
                       <Button variant="outline" size="icon" onClick={() => handleRemoveItem(item.id)}>
                         <Trash2 className="h-4 w-4" />
@@ -124,7 +124,7 @@ export default function Wishlist() {
               <span className="font-semibold">
                 Rs.{" "}
                 {wishlistItems
-                  .reduce((total, item) => total + item.price, 0)
+                  .reduce((total, item) => total + item.productPrice, 0)
                   .toLocaleString()}
               </span>
             </div>

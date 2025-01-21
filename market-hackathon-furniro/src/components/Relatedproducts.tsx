@@ -49,31 +49,31 @@ const [cards,setCards]=useState<ProductSection[]>([])
           setCards(res)
           
         
-          if(!res || res.length === 0){
+          // if(!res || res.length === 0){
             
-            const res:ProductSection[]=await client.fetch(`
+          //   const res:ProductSection[]=await client.fetch(`
             
-               *[_type=='product'][]{
-            'productImage': productImage.asset->url,
-            description,
-            discountPercentage,
-            tags,
-            isNew,
-            title,
-            price,
-            _id
-          }
-            `);
+          //      *[_type=='product'][]{
+          //   'productImage': productImage.asset->url,
+          //   description,
+          //   discountPercentage,
+          //   tags,
+          //   isNew,
+          //   title,
+          //   price,
+          //   _id
+          // }
+          //   `);
           
-          setCards(res)
+          // setCards(res)
           
-          }
+          // }
 
         }
 
         fetchData1();
 
-    },[cards])
+    },[])
 
   
 
@@ -87,14 +87,14 @@ const [cards,setCards]=useState<ProductSection[]>([])
       
       opts={{
         align: "start",
-        loop: true,
+        loop: false,
       }}
       
       
       className="w-[1236px] m-auto ">
         <CarouselContent className="flex overflow-x-auto space-x-4">
 
-          {(cards.reverse().slice(0,16)).map((item:ProductSection ,index:number) => (
+          {(cards.reverse()).map((item:ProductSection ,index:number) => (
             <CarouselItem key={index} className="flex-none w-[285px]">
               <div className="bg-white border border-gray-200 rounded-lg shadow">
                 <div className="relative w-full h-[301px] overflow-hidden rounded-t-lg">
