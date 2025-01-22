@@ -131,4 +131,129 @@ The data schema diagram visualizes the relationships between the entities are al
 Special thanks to mentors and collaborators for their guidance and feedback in refining the technical foundation.
 
 ---
+# Furniro Marketplace Builder
+
+This repository contains the **Furniro Marketplace Builder** project, which is a Next.js-based application built during the **Hackathon 2025**.
+
+---
+
+## Project Overview
+Furniro Marketplace Builder is a web application designed to simplify the creation and management of online furniture marketplaces. It utilizes modern technologies like **Next.js**, **Sanity**, and **TailwindCSS** to deliver a seamless and responsive user experience.
+
+### Live Links
+- **GitHub Repository**: [Furniro Marketplace Builder GitHub](https://github.com/samreensaif/Furniro-Marketplace-Builder-Hackathon-2025.git)
+- **Live Deployment**: [Furniro on Vercel](https://furniro-next-js.vercel.app/)
+
+---
+
+## Technologies Used
+### Frontend
+- **Next.js** (v15.1.5): Framework for building optimized React applications.
+- **React** (v19.0.0): Component-based JavaScript library for user interfaces.
+- **TailwindCSS** (v3.4.1): Utility-first CSS framework.
+
+### Backend
+- **Sanity**: Content management and API platform.
+
+### Additional Libraries
+- **Radix UI**: For accessible UI components.
+- **EmailJS**: To manage email communication.
+- **Embla Carousel**: For advanced carousel functionalities.
+- **Jotai**: For state management.
+- **Styled Components**: For component-level styling.
+- **Axios**: For API integration.
+
+---
+
+## How to Run the Project Locally
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/samreensaif/Furniro-Marketplace-Builder-Hackathon-2025.git
+    ```
+
+2. Navigate to the project directory:
+    ```bash
+    cd Furniro-Marketplace-Builder-Hackathon-2025
+    ```
+
+3. Install dependencies:
+    ```bash
+    npm install
+    ```
+
+4. Set up environment variables:
+    - Create a `.env.local` file in the root directory.
+    - Add the necessary environment variables (refer to `.env.example` if available).
+
+5. Start the development server:
+    ```bash
+    npm run dev
+    ```
+
+6. Open your browser and visit:
+    ```
+    http://localhost:3000
+    ```
+
+---
+
+## Deployment
+The application is hosted on **Vercel**. The staging and production builds can be deployed using the following commands:
+
+- Build:
+    ```bash
+    npm run build
+    ```
+- Start:
+    ```bash
+    npm run start
+    ```
+
+---
+
+## Features
+- **Dynamic Marketplace Builder**: Add, edit, and manage listings in real-time.
+- **Responsive Design**: Optimized for all screen sizes using TailwindCSS.
+- **Carousel Integration**: Advanced product showcase using Embla Carousel.
+- **Email Communication**: Integrated email functionality via EmailJS.
+- **State Management**: Manage application state efficiently with Jotai.
+- **Content Management**: Backed by Sanity CMS for dynamic content updates.
+
+---
+
+## Day 6 Checklist
+- **Deployment Preparation**: ✔
+- **Staging Environment Testing**: ✔
+- **Documentation**: ✔
+- **Form Submission**: ✔
+- **Final Review**: ✔
+
+---
+
+## Contributing
+We welcome contributions to enhance this project. Please follow the steps below:
+1. Fork the repository.
+2. Create a feature branch:
+    ```bash
+    git checkout -b feature-name
+    ```
+3. Commit your changes:
+    ```bash
+    git commit -m "Your descriptive commit message"
+    ```
+4. Push to the branch:
+    ```bash
+    git push origin feature-name
+    ```
+5. Open a Pull Request.
+
+---
+
+## License
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+---
+
+## Acknowledgments
+Special thanks to all participants and mentors of the **Hackathon 2025** for their guidance and support.
 
