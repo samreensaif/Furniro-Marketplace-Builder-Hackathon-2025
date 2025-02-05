@@ -5,7 +5,7 @@ import { Suspense } from "react"
 import Link from "next/link"
 import Image from "next/image"
 
-import Shopbottombar from "@/components/Shpbottombar"
+
 import { getProducts } from "@/services/getProducts"
 import ProductGridClient from "@/components/ProductGridClient"
  // Assume this function fetches products from your data source
@@ -35,7 +35,7 @@ export default async function ShopPage() {
         <ProductGridClient initialCards={products} />
       </Suspense>
 
-      <Shopbottombar />
+      
     </>
   )
 }

@@ -9,6 +9,7 @@ import React, { useEffect, useState } from "react";
 import { FaFacebookSquare, FaLinkedin, FaTwitterSquare } from "react-icons/fa";
 import { useSearchParams } from "next/navigation";
 import { toast } from "sonner";
+import {  sanityUserPost } from "@/services/clerkApi";
 
 interface IProduct {
   id: string;
@@ -50,6 +51,7 @@ function Spmain(props: {
 
   const searchParams = useSearchParams();
 
+  
   // Function for increasing quantity
   function handleAddToCart() {
     setAddToCart(addToCart + 1);
@@ -102,20 +104,27 @@ function Spmain(props: {
     setCartItem(updatedCart);
   }, [searchParams]);
 
+
+useEffect(()=>{
+
+  sanityUserPost();
+},[])
+
+
   function handleRemoveItem(id: string) {
     const updatedCart = cartItem.filter((item: IProduct) => item.id !== id);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
     setCartItem(updatedCart);
   }
 
-  function calculateTotalPrice(discountPercentage: number) {
+  function calculateTotalPrice(dicountPercentage: number ) {
     const total = cartItem.reduce(
-      (total, item) => total + item.productPrice * item.qty,
+      (total, item) => total + (item.productPrice || 0) * (item.qty || 0),
       0
     );
 
     // Apply the discount
-    const discount = (total * discountPercentage) / 100;
+    const discount = (total * dicountPercentage) / 100;
     const finalTotal = total - discount;
 
     return finalTotal;
@@ -173,7 +182,7 @@ function Spmain(props: {
             onClick={() => setCartVisible(false)}
           ></div>
 
-          <div className="absolute flex flex-col top-0 right-0 w-[400px] exsm:w-[300px]  h-[750px] p-4 bg-white z-20">
+          <div className="absolute flex flex-col top-0 right-0 w-[400px] exsm:w-[300px]   p-4 bg-white z-20">
             <div className="flex justify-between items-center mb-6">
               <h2 className="font-bold text-[20px] exsm:text-[22px] xsm:text-[24px]">Shopping Cart</h2>
               <button 
@@ -219,7 +228,7 @@ function Spmain(props: {
 
             <div className="flex justify-between mt-auto mb-6">
               <h3>Subtotal: </h3>
-              <p>Rs. {calculateTotalPrice(dicountPercentage)}</p>
+              <p>Rs. {calculateTotalPrice(dicountPercentage||0)}</p>
             </div>
             <div className="h-[2px] w-full bg-gray-200 mb-6"></div>
             <div className="gap-4 flex exsm:grid grid-cols-1 place-items-center">
@@ -236,7 +245,7 @@ function Spmain(props: {
               </Link>
 
               <Link
-                href={`/checkout?id=${id}&productName=${productName}&productPrice=${productPrice}&productImage=${productImage}&qty=${addToCart}&productDescription=${productDescription}&dicountPercentage=${dicountPercentage}`}
+                href={`/checkout?id=${id}&productName=${productName}&productPrice=${productPrice}&qty=${addToCart}&totalItems=${cartItem.length}&totalPrice=${calculateTotalPrice(dicountPercentage)}&subTotal=${calculateTotalPrice(dicountPercentage)}&dicountPercentage=${dicountPercentage}`}
               >
                 <Button
                   variant={"outline"}
@@ -360,13 +369,16 @@ function Spmain(props: {
               </Button>
             </div>
 
+            
             <Button
               variant="outline"
+              
               onClick={() => { addItemToCart(); }}
               className="w-full exsm:w-[215px] h-[48px] exsm:h-[64px] rounded-[15px]"
             >
               Add To Cart
             </Button>
+           
 
             <Link
               href={`/productComparison?id=${id}&productName=${productName}&productPrice=${productPrice}&productImage=${productImage}&productDescription=${productDescription}&dicountPercentage=${dicountPercentage}`}

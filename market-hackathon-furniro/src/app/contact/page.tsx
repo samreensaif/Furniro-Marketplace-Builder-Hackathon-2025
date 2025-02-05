@@ -6,7 +6,8 @@ import Shopbottombar from "@/components/Shpbottombar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { sendEmail } from "@/utils/emailService";
+import { sendEmail } from "@/utils/emailServices";
+
 
 import { Clock, MapPin, Phone } from "lucide-react";
 import Image from "next/image";

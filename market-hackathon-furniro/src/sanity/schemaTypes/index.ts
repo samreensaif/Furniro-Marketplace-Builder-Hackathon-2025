@@ -18,7 +18,9 @@ import { category } from './blogPage-sections/category'
 import { relatedPost } from './blogPage-sections/relatedPost'
 import { browseSection } from './landindPage-sections/browseSection'
 import { funiroSection } from './landindPage-sections/funiroSection'
+import { userSchema } from './user'
+
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [blogPage,blogMain,category,relatedPost,product,comment,landingPage,hero,browseSection,funiroSection,ourProducts,mainBox,pC,relatedProduct,relatedProductSection],
+  types: [blogPage,blogMain,category,relatedPost,product,comment,landingPage,hero,browseSection,funiroSection,ourProducts,mainBox,pC,relatedProduct,relatedProductSection,userSchema],
 }

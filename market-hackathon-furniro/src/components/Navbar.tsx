@@ -7,8 +7,9 @@ import Link from 'next/link'
 import { Search, Heart, ShoppingCart, AlignLeft } from 'lucide-react'
 import { useAtom } from 'jotai'
 import { searchName } from '@/globalState/globalState'
-import {  ClerkProvider, SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/nextjs';
+
 import { Button } from './ui/button'
+import { UserButton } from '@clerk/nextjs'
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -53,10 +54,10 @@ export default function Navbar() {
             value={value}
             onChange={(e) => setValue(e.target.value)}
             placeholder="Search..." 
-            className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
+            className="p-2 border mb-3 border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
           />
           <button aria-label="Search" className="p-2 hover:bg-black/5 rounded-full transition-colors">
-            <Search className="w-6 h-6" />
+            <Search className="w-6 h-6 " />
           </button>
 
 
@@ -77,25 +78,7 @@ export default function Navbar() {
           </button>
           </Link>
 
-<ClerkProvider>
-          {/* User Account Section */}
-          <SignedOut>
-            <SignInButton />
-          </SignedOut>
-          <SignedIn>
-            <UserButton
-              appearance={{
-                elements: {
-                  rootBox: "custom-user-button",
-                  avatarBox: "custom-avatar",
-                  popoverCard: "custom-popover-card",
-                },
-              }}
-            />
-          </SignedIn>
-
-          </ClerkProvider>
-
+          <UserButton/>
 
         </div>
       </div>
@@ -139,24 +122,9 @@ export default function Navbar() {
             <ShoppingCart className="w-6 h-6" />
           </button>
           </Link>
-
-           {/* Add UserButton in Mobile View */}
-           <ClerkProvider>
-              <SignedOut>
-                <SignInButton />
-              </SignedOut>
-              <SignedIn>
-                <UserButton
-                  appearance={{
-                    elements: {
-                      rootBox: 'custom-user-button',
-                      avatarBox: 'custom-avatar',
-                      popoverCard: 'custom-popover-card',
-                    },
-                  }}
-                />
-              </SignedIn>
-            </ClerkProvider>
+            <UserButton />
+            
+         
         </div>
 
         </div>
